@@ -1,9 +1,8 @@
-let age = 22;
-age = 23;
-age = 31.5;
-let ageAsString = "dwadzieścia dwa";
-ageAsString = "dwanaście";
-ageAsString = `${age}`;
-console.log(ageAsString);
-const add = (v1, v2) => v1 + v2;
-console.log(add(10, 50));
+const input1 = document.querySelector("#input1");
+const input2 = document.querySelector("#input2");
+const btn = document.querySelector("button");
+const add = (num1, num2) => num1 + num2;
+btn.addEventListener("click", () => {
+    const sum = add(Number(input1.value), Number(input2.value));
+    console.log(sum);
+});
