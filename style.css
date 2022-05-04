@@ -1,0 +1,18 @@
+.gym {
+  color: green;
+}
+.hobby {
+  color: rgb(159, 159, 129);
+}
+.work {
+  text-decoration: underline;
+  color: red;
+}
+.general {
+  color: cadetblue;
+}
+form ul {
+  list-style-type: none;
+  display: flex;
+  padding: 0;
+}

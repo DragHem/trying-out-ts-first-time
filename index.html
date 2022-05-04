@@ -8,11 +8,17 @@
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>TypeScript</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!--    <input id="input1" type="number" />-->
-    <!--    <input id="input2" type="number" />-->
-    <button>Buy</button>
-    <script src="./dist/app.js"></script>
+    <form class="container" autocomplete="off">
+      <label for="name">Task:</label>
+      <input type="text" id="name" />
+      <ul class="categories"></ul>
+      <button>Add</button>
+    </form>
+    <p>Todo:</p>
+    <ul class="tasks"></ul>
+    <script type="module" src="./dist/toDo.js"></script>
   </body>
 </html>
