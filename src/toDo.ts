@@ -1,6 +1,7 @@
 import { Task, Category } from "./types/types.js";
 import renderTasks from "./helpers/render-tasks.helper.js";
 import { render as renderCategories } from "./helpers/render-categories.helper.js";
+import { TaskClass } from "./classes/task.js";
 
 const tasksContainerElement: HTMLElement = document.querySelector(".tasks");
 const taskNameInputElement: HTMLInputElement = document.querySelector("#name");
@@ -19,21 +20,9 @@ const categories: Category[] = [
 ];
 
 const tasks: Task[] = [
-  {
-    name: "Wyrzucić śmieci",
-    done: false,
-    category: Category.GENERAL,
-  },
-  {
-    name: "Pójść na siłke",
-    done: true,
-    category: Category.GYM,
-  },
-  {
-    name: "Nakarmić koty",
-    done: false,
-    category: Category.WORK,
-  },
+  new Task("Wyrzucić śmieci", false, Category.GENERAL),
+  new Task("Pójść na siłke", true, Category.GYM),
+  new Task("Nakarmić koty", false),
 ];
 
 const addTask = (task: Task) => {
@@ -47,15 +36,25 @@ const updateSelectedCategory = (newCategory: Category) => {
 addButtonElement.addEventListener("click", (e) => {
   e.preventDefault();
 
-  addTask({
-    name: taskNameInputElement.value,
-    done: false,
-    category: selectedCategory,
-  });
+  addTask(new Task(taskNameInputElement.value, false, selectedCategory));
   taskNameInputElement.value = "";
   renderTasks(tasks, tasksContainerElement);
 });
 
-addTask({ name: "test", category: Category.GENERAL, done: true });
+type TaskAsTuple = [string, Category, boolean];
+
+const task: TaskAsTuple = ["test", Category.GYM, false];
+const taskName = task[0];
+const taskCategory = task[1];
+const taskDoneStatus = task[2];
+
 renderCategories(categories, categoryContainerElement, updateSelectedCategory);
 renderTasks(tasks, tasksContainerElement);
+
+const taskClassInstance = new TaskClass(
+  "Zadanie z konstruktora",
+  false,
+  Category.GYM
+);
+
+taskClassInstance.logCreationDate("!");
