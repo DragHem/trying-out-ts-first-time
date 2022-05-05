@@ -26,6 +26,9 @@ const tasks = [
 const addTask = (task) => {
     tasks.push(task);
 };
+const updateSelectedCategory = (newCategory) => {
+    selectedCategory = newCategory;
+};
 addButtonElement.addEventListener("click", (e) => {
     e.preventDefault();
     addTask({
@@ -37,5 +40,5 @@ addButtonElement.addEventListener("click", (e) => {
     renderTasks(tasks, tasksContainerElement);
 });
 addTask({ name: "test", category: "general", done: true });
-renderCategories(categories, categoryContainerElement, selectedCategory);
+renderCategories(categories, categoryContainerElement, updateSelectedCategory);
 renderTasks(tasks, tasksContainerElement);
